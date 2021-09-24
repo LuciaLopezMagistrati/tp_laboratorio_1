@@ -1,0 +1,147 @@
+/*
+ ============================================================================
+ Name        : TP_1.c
+ Author      : Lucia Ines Lopez
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int obtenerNumeroFloat( float * pResultado, char * mensaje, char * mensajeError, float minimo, float maximo, int reintentos);
+/*
+int utn_sumar();
+int utn_restar();
+int utn_dividir();
+int utn_multiplicar();
+int utn_factorizar();
+*/
+
+int main(void) {
+	setbuf(stdout,NULL);
+
+	float operando1;
+	float operando2;
+	float minimo;
+	float maximo;
+	char mensaje1;
+	char mensaje2;
+	float resultado;
+
+	minimo = -12;
+	maximo = 12;
+
+
+	operando1 = obtenerNumeroFloat(&resultado, "Ingrese un numero", "Error", minimo, maximo, 3);
+
+
+
+	// puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	return EXIT_SUCCESS;
+}
+
+int obtenerNumeroFloat( float * pResultado, char * mensaje, char * mensajeError, float minimo, float maximo, int reintentos)
+{
+	int retorno = 1;
+	float num;
+	int resultadoScanf;
+
+
+	do
+	{
+		printf("%s", mensaje);
+		resultadoScanf = scanf( "%f" ,&num);
+
+		if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && resultadoScanf == 1 && num<=maximo && num>=minimo)
+		{
+			* pResultado = num;
+			//printf("numero %f", num);
+			retorno = 0;
+			break;
+		}
+		else
+		{
+			printf("%s", mensajeError);
+			fflush(stdin);
+			reintentos--;
+		}
+	} while(reintentos>=0);
+
+	return retorno;
+
+}
+
+/*
+int sumarFloat(float  * pResultado, float num1, float num2){
+	int retorno = 1;
+
+	if(pResultado != NULL){
+		*pResultado = num1 + num2;
+		retorno = 0;
+	}
+	return retorno;
+
+	}
+
+
+
+int restarFloat(float  * pResultado, float num1, float num2){
+	int retorno = 1;
+
+	if(pResultado != NULL){
+		*pResultado = num1 - num2;
+		retorno = 0;
+	}
+	return retorno;
+
+	}
+
+
+int dividirFloat(float  * pResultado, float num1, float num2){
+	int retorno = 1;
+
+	if(pResultado != NULL && num2 !=0){
+		*pResultado = num1 / num2;
+		retorno = 0;
+	}
+	return retorno;
+
+	}
+
+
+
+int multiplicarFloat(float  * pResultado, float num1, float num2){
+	int retorno = 1;
+
+	if(pResultado != NULL){
+		*pResultado = num1 * num2;
+		retorno = 0;
+	}
+	return retorno;
+
+	}
+
+
+int verificarNumeroFact(int* pResultado, float num){
+	int retorno = 1;
+
+
+
+	return retorno;
+}
+
+int factorizar(int num){
+	int retorno;
+
+	return retorno;
+
+	}
+
+
+*/
+
+

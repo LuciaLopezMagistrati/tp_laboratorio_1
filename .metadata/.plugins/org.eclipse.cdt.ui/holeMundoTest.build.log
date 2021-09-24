@@ -1,0 +1,7 @@
+08:38:20 **** Rebuild of configuration Debug for project holeMundoTest ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\holeMundoTest.o" "..\\src\\holeMundoTest.c" 
+gcc -o holeMundoTest.exe "src\\holeMundoTest.o" 
+
+08:38:21 Build Finished. 0 errors, 0 warnings. (took 505ms)
+

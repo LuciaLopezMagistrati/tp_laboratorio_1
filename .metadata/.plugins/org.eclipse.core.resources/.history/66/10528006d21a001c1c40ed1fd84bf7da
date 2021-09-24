@@ -1,0 +1,65 @@
+/*
+ ============================================================================
+ Name        : TP_1.c
+ Author      : Lucia Ines Lopez
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int utn_getNumeroFloat( float * pResultado, char * mensaje, char * mensajeError, float minimo, float maximo, int reintentos);
+
+int main(void) {
+	setbuf(stdout,NULL);
+
+	float resultado;
+	float minimo;
+	float maximo;
+
+	minimo = -12;
+	maximo = 12;
+
+
+	resultado = utn_getNumeroFloat(&resultado, "Ingrese un numero", "Error", minimo, maximo, 3);
+
+
+
+	// puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	return EXIT_SUCCESS;
+}
+
+int utn_getNumeroFloat( float * pResultado, char * mensaje, char * mensajeError, float minimo, float maximo, int reintentos)
+{
+	int retorno = 1;
+	float num;
+	int resultadoScanf;
+
+
+	do
+	{
+		printf("%s", mensaje);
+		resultadoScanf = scanf( "%f" ,&num);
+
+		if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && resultadoScanf == 1 && num<=maximo && num>=minimo)
+		{
+			* pResultado = num;
+			printf("numero %f", num);
+			retorno = 0;
+			break;
+		}
+		else
+		{
+			printf("%s", mensajeError);
+			fflush(stdin);
+			reintentos--;
+		}
+	} while(reintentos>=0);
+
+	return retorno;
+
+}
